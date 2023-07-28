@@ -7,13 +7,11 @@
 //
 // Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
+    // 返回一个可变的迭代器
     for element in v.iter_mut() {
-        // TODO: Fill this up so that each element in the Vec `v` is
-        // multiplied by 2.
-        ???
+        // TODO: Fill this up so that each element in the Vec `v` is multiplied by 2.
+        *element <<= 1;
     }
 
     // At this point, `v` should be equal to [4, 8, 12, 16, 20].
@@ -21,10 +19,12 @@ fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
 }
 
 fn vec_map(v: &Vec<i32>) -> Vec<i32> {
+    // 这里的闭包创建了一个新的迭代器，对其中 vector 中的每个元素都被 << 1
+    // map 获取一个闭包，可以指定 [任何] 希望在 [遍历的每个元素] 上执行的操作
     v.iter().map(|element| {
-        // TODO: Do the same thing as above - but instead of mutating the
-        // Vec, you can just return the new number!
-        ???
+        // TODO: Do the same thing as above - but instead of mutating the Vec,
+        // TODO: you can just return the new number!
+        element << 1
     }).collect()
 }
 
