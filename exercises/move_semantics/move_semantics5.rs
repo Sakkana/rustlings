@@ -6,13 +6,14 @@
 // Execute `rustlings hint move_semantics5` or use the `hint` watch subcommand
 // for a hint.
 
-// I AM NOT DONE
-
 fn main() {
     let mut x = 100;
+
+    // x 可不能被 borrow 多次
     let y = &mut x;
-    let z = &mut x;
+    // let z = &mut x;
     *y += 100;
-    *z += 1000;
+    // *z += 1000;
+    *y += 1000;
     assert_eq!(x, 1200);
 }

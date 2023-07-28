@@ -7,12 +7,14 @@
 // Execute `rustlings hint move_semantics2` or use the `hint` watch subcommand
 // for a hint.
 
-// I AM NOT DONE
-
 fn main() {
+    // 所有权属于 vec0
     let vec0 = Vec::new();
 
-    let mut vec1 = fill_vec(vec0);
+    // 所有权转移 vec0 -> 函数 -> vec1
+    // 怎么办呢
+    // 所有权别转移给函数，函数借用一份，并且拷贝数据然后返回给 vec1
+    let mut vec1 = fill_vec(&vec0);
 
     println!("{} has length {}, with contents: `{:?}`", "vec0", vec0.len(), vec0);
 
@@ -21,8 +23,8 @@ fn main() {
     println!("{} has length {}, with contents `{:?}`", "vec1", vec1.len(), vec1);
 }
 
-fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
-    let mut vec = vec;
+fn fill_vec(vec: &Vec<i32>) -> Vec<i32> {
+    let mut vec = vec.clone();
 
     vec.push(22);
     vec.push(44);
