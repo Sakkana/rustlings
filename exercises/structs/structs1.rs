@@ -8,9 +8,9 @@
 // 1. 正常结构体
 struct ColorClassicStruct {
     // TODO: Something goes here
-    red: i16,
-    green: i16,
-    blue: i16,
+    red: u8,
+    green: u8,
+    blue: u8,
 }
 
 // 2. tuple 结构体
