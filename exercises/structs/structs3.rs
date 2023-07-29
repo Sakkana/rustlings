@@ -7,8 +7,6 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 #[derive(Debug)]
 struct Package {
     sender_country: String,
@@ -16,8 +14,12 @@ struct Package {
     weight_in_grams: i32,
 }
 
+// 蕾丝成员函数
+
 impl Package {
-    fn new(sender_country: String, recipient_country: String, weight_in_grams: i32) -> Package {
+    // 我们可以定义不以 self 为第一参数的关联函数（因此不是方法）
+    // 关联函数经常被用作返回一个结构体新实例的构造函数
+    fn new(/*&self, */sender_country: String, recipient_country: String, weight_in_grams: i32) -> Package {
         if weight_in_grams <= 0 {
             panic!("Can not ship a weightless package.")
         } else {
@@ -29,12 +31,18 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        if self.recipient_country == "Canada" {
+            false
+        } else {
+            true
+        }
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        self.weight_in_grams * cents_per_gram
     }
 }
 
